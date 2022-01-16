@@ -1,0 +1,29 @@
+selenium:
+  headless: true
+  timeoutSec: 60
+  driver:
+    path: /Users/antonzhuikov/exchangerates/produce-forex-rate/src/main/resources/drivers/chromedriver_mac
+    type: webdriver.chrome.driver
+forex:
+  user:
+    login: wordscreators@gmail.com
+    password: WOrdscreators
+spring:
+  kafka:
+    bootstrap-servers: ${kafka_bootstrap_servers:host.minikube.internal:9094}
+    properties:
+      sasl:
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username=${kafka_username:'admin'} password=${kafka_password:'admin-secret'};
+        mechanism: PLAIN
+      security:
+        protocol: SASL_PLAINTEXT
+    producer:
+      client-id: forexProducer
+      retries: 2
+    jaas:
+      enabled: true
+    listener:
+      poll-timeout: 1800000
+      concurrency: 1
+      ack-mode: manual_immediate

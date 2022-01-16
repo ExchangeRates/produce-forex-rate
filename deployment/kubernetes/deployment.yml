@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forex-producer-deplyment
+  labels:
+    app: forex-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forex-producer
+  template:
+    metadata:
+      labels:
+        app: forex-producer
+    spec:
+      containers:
+        - name: forex-producer
+          image: azch97/fp:latest
+          imagePullPolicy: Always
+
