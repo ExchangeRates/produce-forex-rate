@@ -11,6 +11,7 @@ forex:
 spring:
   kafka:
     bootstrap-servers: ${kafka_bootstrap_servers:host.minikube.internal:9094}
+#    bootstrap-servers: ${kafka_bootstrap_servers:localhost:9092}
     properties:
       sasl:
         jaas:
@@ -19,8 +20,12 @@ spring:
       security:
         protocol: SASL_PLAINTEXT
     producer:
-      client-id: forexProducer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      client-id: ${random.uuid}
       retries: 2
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: "cup:com.wcreators.produceforexrate.dto.CupPointDTO"
     jaas:
       enabled: true
     listener:
