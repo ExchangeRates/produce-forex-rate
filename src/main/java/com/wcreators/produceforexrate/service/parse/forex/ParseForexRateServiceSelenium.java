@@ -90,6 +90,7 @@ public class ParseForexRateServiceSelenium implements ParseRateService {
         sleep(5000);
         loader.waitLoader();
         String ratesMenuXpath = "//li[contains(text(), ' FX ')]";
+        sleep(2000);
         parseEngine.getWait()
                 .until(presenceOfElementLocated(By.xpath(ratesMenuXpath)))
                 .click();

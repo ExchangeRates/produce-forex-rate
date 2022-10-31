@@ -1,6 +1,6 @@
 package com.wcreators.produceforexrate.parse.job;
 
-import com.wcreators.produceforexrate.kafka.ProducerService;
+import com.wcreators.produceforexrate.producer.ProducerService;
 import com.wcreators.produceforexrate.models.CupPoint;
 import com.wcreators.produceforexrate.models.Rate;
 import com.wcreators.produceforexrate.service.cup.CupService;

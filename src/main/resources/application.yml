@@ -1,17 +1,26 @@
 selenium:
-  headless: true
+  headless: false 
   timeoutSec: 60
   driver:
     path: /Users/antonzhuikov/exchangerates/produce-forex-rate/src/main/resources/drivers/chromedriver_mac
     type: webdriver.chrome.driver
 forex:
   user:
-    login: wordscreators@gmail.com
-    password: WOrdscreators
+    login: ''
+    password: ''
+produce:
+  http:
+    is-enabled: false
+    URL: http://localhost:9000/strategy/ers
+csv:
+  is-enabled: true
+  file: /Users/antonzhuikov/exchangerates/test.csv
+kafka:
+  is-enabled: false
 spring:
   kafka:
-    bootstrap-servers: ${kafka_bootstrap_servers:host.minikube.internal:9094}
-#    bootstrap-servers: ${kafka_bootstrap_servers:localhost:9092}
+    #    bootstrap-servers: ${kafka_bootstrap_servers:host.minikube.internal:9094}
+    bootstrap-servers: ${kafka_bootstrap_servers:localhost:9092}
     properties:
       sasl:
         jaas:
